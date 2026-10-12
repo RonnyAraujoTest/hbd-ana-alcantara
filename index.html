@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Feliz Cumpleaños, Ana! 🌹</title>
+  <meta name="description" content="Feliz cumpleaños Ana Alcántara — La Negra Bella" />
+  <meta name="theme-color" content="#5e0a30" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Pantalla de inicio ===== -->
+  <div class="intro" id="intro">
+    <div class="intro__content">
+      <p class="intro__date">Octubre 12</p>
+      <h1 class="intro__name">Ana Alcántara</h1>
+      <p class="intro__nick">La Negra Bella</p>
+      <button class="btn btn--primary" id="startBtn" type="button">
+        Toca para empezar 🎵
+      </button>
+    </div>
+  </div>
+
+  <!-- Corazones flotantes de fondo -->
+  <div class="hearts-bg" id="heartsBg" aria-hidden="true"></div>
+
+  <!-- Confeti de corazones -->
+  <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+  <!-- Control de música -->
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="Reproducir o pausar música" hidden>
+    <span class="music-toggle__icon" id="musicIcon">🔊</span>
+  </button>
+
+  <main class="flow" id="flow">
+
+    <!-- ===== Hero ===== -->
+    <section class="scene scene--hero" id="hero">
+      <div class="balloons" aria-hidden="true">
+        <span class="balloon balloon--1"></span>
+        <span class="balloon balloon--2"></span>
+        <span class="balloon balloon--3"></span>
+        <span class="balloon balloon--4"></span>
+        <span class="balloon balloon--5"></span>
+      </div>
+      <div class="hero__inner">
+        <p class="hero__date">Octubre 12</p>
+        <h1 class="hero__title" data-split>¡Feliz Cumpleaños, Ana!</h1>
+        <p class="hero__nick">La Negra Bella ✨</p>
+        <span class="hero__scroll" aria-hidden="true">⌄</span>
+      </div>
+    </section>
+
+    <!-- ===== Pastel ===== -->
+    <section class="scene scene--cake" id="cake">
+      <h2 class="scene__title">Pide un deseo…</h2>
+      <div class="cake-wrap">
+        <div class="cake" id="cakeObj">
+          <div class="cake__candles" aria-hidden="true">
+            <span class="candle"><span class="flame"><span class="smoke"></span></span></span>
+            <span class="candle"><span class="flame"><span class="smoke"></span></span></span>
+            <span class="candle"><span class="flame"><span class="smoke"></span></span></span>
+          </div>
+          <div class="cake__layer cake__layer--top"></div>
+          <div class="cake__layer cake__layer--bottom"></div>
+          <div class="cake__plate"></div>
+        </div>
+      </div>
+      <button class="btn btn--primary" id="blowBtn" type="button">🕯️ Soplar las velas</button>
+      <p class="scene__hint">Haz clic y pide un deseo 💗</p>
+    </section>
+
+    <!-- ===== Mensaje ===== -->
+    <section class="scene scene--message" id="message">
+      <div class="card">
+        <span class="card__quote" aria-hidden="true">“</span>
+        <p class="card__text" id="typedText" data-text="HBD Negra, espero mucho de ti. Disfruta tu día"></p>
+        <p class="card__sign">— R.A.M</p>
+      </div>
+    </section>
+
+    <!-- ===== Galería ===== -->
+    <section class="scene scene--gallery" id="gallery">
+      <h2 class="scene__title">Momentos 💕</h2>
+      <div class="gallery" id="gallery-grid">
+        <figure class="polaroid"><img src="assets/img/foto1.jpg" alt="Recuerdo 1" loading="lazy" /><figcaption>Recuerdo 1</figcaption></figure>
+        <figure class="polaroid"><img src="assets/img/foto2.jpg" alt="Recuerdo 2" loading="lazy" /><figcaption>Recuerdo 2</figcaption></figure>
+        <figure class="polaroid"><img src="assets/img/foto3.jpg" alt="Recuerdo 3" loading="lazy" /><figcaption>Recuerdo 3</figcaption></figure>
+        <figure class="polaroid"><img src="assets/img/foto4.jpg" alt="Recuerdo 4" loading="lazy" /><figcaption>Recuerdo 4</figcaption></figure>
+        <figure class="polaroid"><img src="assets/img/foto5.jpg" alt="Recuerdo 5" loading="lazy" /><figcaption>Recuerdo 5</figcaption></figure>
+        <figure class="polaroid"><img src="assets/img/foto6.jpg" alt="Recuerdo 6" loading="lazy" /><figcaption>Recuerdo 6</figcaption></figure>
+      </div>
+      <p class="gallery__empty" id="galleryEmpty" hidden>
+        Aún no hay fotos 🌸<br /><small>Colócalas en <code>assets/img/</code> como <code>foto1.jpg</code>, <code>foto2.jpg</code>…</small>
+      </p>
+    </section>
+
+    <!-- ===== Final ===== -->
+    <section class="scene scene--final" id="final">
+      <p class="final__date">Octubre 12</p>
+      <h2 class="final__title">¡Feliz Cumpleaños, Negra! 🎉</h2>
+      <p class="final__sub">Que este año sea tan bello como tú 💖</p>
+      <div class="final__actions">
+        <button class="btn" id="replayBtn" type="button">🔁 Ver de nuevo</button>
+        <button class="btn btn--ghost" id="finalConfettiBtn" type="button">💗 Más corazones</button>
+      </div>
+      <p class="final__sign">Con cariño, R.A.M</p>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Cerrar">✕</button>
+    <img id="lightboxImg" src="" alt="Foto ampliada" />
+  </div>
+
+  <audio id="song" src="assets/audio/cancion.mp3" preload="none" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
